@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf8" />
+  <title>your project name</title>
+  <link href="./public/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Put your HTML here -->
+  <header>
+    <div id="hint-box">
+      <a href="" id="hint"><img class="help hide" src="public/ask.png" alt="ask" /></a>
+      <img id="call" class="help hide" src="public/call.png" alt="call" />
+      <img id="cheat" class="help hide" src="public/half.png" alt="half" />
+      <audio src="public/service.wav" id="audioCall"></audio>
+    </div>
+    <h1>WHO WANTS TO BE A JAVASCRIPTER</h1>
+    <div id="timing"></div>
+  </header>
+
+  <main>
+    <div id="user-interface" class="centered">
+      <!-- place to count the correct answer -->
+      <div id="process-correct-answers" class="hide">
+        <div id="process-correct-answers-move">
+          <p id="question-correct"></p>
+        </div>
+      </div>
+
+      <!-- place of question and answers and button -->
+      <div id="question-area">
+        <img id="welcoming" src="public/intro.JPG" alt="intro" />
+        <div id="question-container" class="hide">
+          <div id="question">Question</div>
+          <div id="answer-buttons" class="btn-grid"></div>
+        </div>
+        <div class="controls">
+          <button id="add-btn" class="add-btn btn hide">Add</button>
+          <button id="start-btn" class="start-btn btn">Start</button>
+          <button id="next-btn" class="next-btn btn hide">Next</button>
+          <button id="exit-btn" class="exit-btn btn hide">Exit</button>
+          <button id="delete-btn" class="delete-btn btn hide">Delete</button>
+        </div>
+      </div>
+
+      <!-- place to count the total number of questions -->
+      <div id="process-answered-questions" class="hide">
+        <ul id="number-question"></ul>
+        <div id="process-answered-questions-move">
+          <p id="number"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- your data -->
+  <script defer type="module" src="./src/init/index.js"></script>
+</body>
+
+</html>

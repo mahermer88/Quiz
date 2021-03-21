@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* The trick to add a class called hide for each element we would hide it */
+.hide {
+  display: none;
+}
+
+/* styling the body with make its  color react to the answer */
+:root {
+  --hue-neutral: 220;
+  --hue-wrong: 275;
+  --hue-correct: 145;
+}
+body {
+  --hue: var(--hue-neutral);
+  background-color: hsl(var(--hue), 100%, 50%);
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: 'Concert One', cursive !important;
+  font-size: 1.5rem !important;
+  background-image: url(body-ground.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+body.correct {
+  --hue: var(--hue-correct);
+  transition: 0.3s ease-in-out;
+}
+body.wrong {
+  --hue: var(--hue-wrong);
+  transition: 0.3s ease-in-out;
+}
+
+/* styling the header show the title and make the color of title related to body color */
+header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+/* styling the hint part to get help */
+#hint-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 20%;
+  height: 80px;
+  padding: 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+#hint-box img {
+  width: 70px;
+  height: 50px;
+  border-radius: 50%;
+}
+#hint-box img:hover {
+  border: 2px solid white;
+}
+h1 {
+  width: 50%;
+  height: 80px;
+  text-align: center;
+  align-self: center;
+  margin: 0 5%;
+  padding: 10px 0;
+  font-size: 45px;
+  color: hsl(var(--hue), 100%, 20%);
+  text-transform: uppercase;
+  text-shadow: 1px 1px 20px white, 2px 2px 25px silver, 0px 0px 7px white;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+#timing {
+  width: 20%;
+  height: 80px;
+  padding: 10px;
+  text-align: center;
+  align-self: center;
+  font-size: 50px;
+  color: white;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* styling the main part to show the quiz */
+#user-interface {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 60%;
+  padding: 20px;
+}
+
+/* styling the intro image which disappeared with starting the game */
+img {
+  overflow: hidden;
+  display: flex;
+  align-self: center;
+  height: 450px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+/* styling the box of showing the question text */
+#question-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: stretch;
+  align-items: stretch;
+  text-align: center;
+  width: 70%;
+  height: 50%;
+  font-size: 1.8rem;
+  color: white;
+}
+
+/* styling the answers and the buttons */
+.btn-grid {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+.btn {
+  border: none;
+  outline: invert;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0);
+  margin: 15px 0;
+  padding: 20px;
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+}
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+/* styling the button if the answer is correct */
+.btn.correct {
+  --hue: var(--hue-correct);
+  background-color: hsl(var(--hue), 100%, 20%);
+}
+
+/* styling the button such as start, next , exit */
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+}
+.start-btn,
+.next-btn,
+.add-btn,
+.delete-btn,
+.exit-btn {
+  text-align: center;
+  width: 130px;
+  height: 130px;
+  padding: 5px;
+  font-size: 2.4rem !important;
+  font-weight: bold;
+  font-family: 'Concert One', cursive !important;
+  border: 1px solid silver;
+  border-radius: 50%;
+}
+
+/* styling the colorful counter of current questions and total number of correct answer */
+#process-answered-questions,
+#process-correct-answers {
+  overflow: hidden;
+  position: relative;
+  width: 20%;
+  max-width: 15%;
+  font-family: 'Concert One', cursive !important;
+  text-align: center;
+  border: 4px solid hsl(var(--hue), 100%, 30%);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0);
+}
+#process-correct-answers-move {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 2rem !important;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(6, 180, 59),
+    rgb(90, 180, 117),
+    rgb(153, 179, 161)
+  );
+  transition: 0.3s ease-in-out;
+}
+#process-answered-questions-move {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(4, 112, 47, 0.5);
+  transition: 0.3s ease-in-out;
+}
+#question-number,
+#question-correct {
+  margin: 0 !important;
+}
+#number-question {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  color: hsl(var(--hue), 100%, 30%);
+}
